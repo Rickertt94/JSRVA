@@ -12,7 +12,7 @@ import java.util.Properties;
  */
 public class Configuration {
     public enum Key {
-        PUBLIC, SECRET, TOPSECRET, VERYSECRET, UNAME, PWORD, SES, EMAIL, PASW, EMAIL2, VCODE
+        PUBLIC, SECRET, TOPSECRET, VERYSECRET, UNAME, PWORD, SES, SES1, SES2, EMAIL, PASW, EMAIL2, VCODE
     }
 
     private final static String propFileName = "local.properties";

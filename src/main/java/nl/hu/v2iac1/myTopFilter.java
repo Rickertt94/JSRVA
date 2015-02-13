@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
  
-public class myFilter implements Filter {
+public class myTopFilter implements Filter {
  
 	 private ArrayList<String> urlList;
      
@@ -25,26 +25,26 @@ public class myFilter implements Filter {
 	            FilterChain chain) throws IOException, ServletException {
 	    	
 	    	Configuration configuration = new Configuration();
-	    	String ses = configuration.getValue(Configuration.Key.SES);
+	    	String ses1 = configuration.getValue(Configuration.Key.SES1);
 	        HttpServletRequest request = (HttpServletRequest) req;
 	        HttpServletResponse response = (HttpServletResponse) res;
 	        String url = request.getServletPath();
 	        boolean allowedRequest = false;
 	        
-/*	        if(request.getSession().getAttribute("user") == null){
+	        if(request.getSession().getAttribute("user") == null){
 	        	 response.sendRedirect("http://www.google.nl");
 	        }
-	        else */if(request.getSession().getAttribute("user").equals(ses)) {
+	        else if(request.getSession().getAttribute("user").equals(ses1)) {
 	            allowedRequest = true;
 	            request.getSession().setAttribute("user", null);
 	        }
 	             
-/*	        if (!allowedRequest) {
+	        if (!allowedRequest) {
 	            HttpSession session = request.getSession(false);
 	            if (null == session) {
 	                response.sendRedirect("http://www.google.nl");
 	            }
-	        }*/
+	        }
 	         
 	        chain.doFilter(req, res);
 	    }
@@ -61,3 +61,4 @@ public class myFilter implements Filter {
 //	        }
 	    }
 	}
+
